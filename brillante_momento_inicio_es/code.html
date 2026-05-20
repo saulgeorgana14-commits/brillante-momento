@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Brillante Momento | Experiencias de Picnic de Lujo</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#c05c3e", // Terracotta
+              "secondary": "#d4af37", // Champagne Gold
+              "charcoal-brown": "#241715", // Deep warm charcoal brown
+              "warm-cream": "#fdfaf2", // Warm base cream
+              "glass-bg": "rgba(253, 250, 242, 0.75)",
+              "glass-border": "rgba(192, 92, 62, 0.12)",
+            },
+            fontFamily: {
+              "serif": ["Playfair Display", "serif"],
+              "sans": ["Plus Jakarta Sans", "sans-serif"]
+            },
+            boxShadow: {
+              "glass": "0 8px 32px 0 rgba(36, 23, 21, 0.04)",
+              "glass-hover": "0 12px 40px 0 rgba(192, 92, 62, 0.08)",
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+        /* Ambient backdrop anim */
+        @keyframes float-blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.95); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        .animate-blob {
+            animation: float-blob 10s infinite ease-in-out;
+        }
+        .animate-blob-delayed {
+            animation: float-blob 12s infinite ease-in-out 2s;
+        }
+        
+        /* Floating WA button with golden/terracotta pulse */
+        @keyframes pulse-wa {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+            70% { transform: scale(1.06); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        .wa-btn {
+            animation: pulse-wa 2.5s infinite;
+        }
+
+        /* Glassmorphism utility classes */
+        .glass-card {
+            background: rgba(253, 250, 242, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(192, 92, 62, 0.12);
+        }
+        .glass-card-dark {
+            background: rgba(36, 23, 21, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+        .glass-nav {
+            background: rgba(253, 250, 242, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(192, 92, 62, 0.08);
+        }
+
+        /* Smooth border gradient animation on hover */
+        .hover-glow {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .hover-glow:hover {
+            border-color: rgba(192, 92, 62, 0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(192, 92, 62, 0.06);
+        }
+    </style>
+</head>
+<body class="bg-warm-cream text-charcoal-brown font-sans overflow-x-hidden selection:bg-primary selection:text-white">
+
+    <!-- Ambient Glowing Blobs representing warm Tabasco sunsets -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div class="absolute top-[10%] left-[5%] w-96 h-96 bg-primary/5 rounded-full filter blur-[80px] animate-blob"></div>
+        <div class="absolute top-[40%] right-[10%] w-[450px] h-[450px] bg-secondary/5 rounded-full filter blur-[100px] animate-blob-delayed"></div>
+        <div class="absolute bottom-[10%] left-[15%] w-80 h-80 bg-primary/5 rounded-full filter blur-[70px] animate-blob"></div>
+    </div>
+
+    <!-- Top Bar -->
+    <div class="relative z-50 bg-charcoal-brown text-warm-cream py-2.5 text-center text-[10px] md:text-xs font-semibold tracking-[0.25em] uppercase px-4 border-b border-secondary/10">
+        📍 Paraíso &amp; Comalcalco | 📞 933-146-98-57
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="fixed top-12 left-0 w-full z-50 transition-all duration-500 px-4 md:px-8 lg:px-16" id="main-nav">
+        <nav class="max-w-7xl mx-auto glass-nav h-20 flex justify-between items-center px-6 md:px-10 rounded-2xl shadow-glass">
+            <div class="flex items-center gap-3">
+                <span class="font-serif italic font-semibold text-2xl text-primary tracking-wide">Brillante Momento</span>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8 font-semibold text-[11px] uppercase tracking-[0.2em] text-charcoal-brown/80">
+                <a class="hover:text-primary transition-colors cursor-pointer" href="#experiences">Experiencias</a>
+                <a class="hover:text-primary transition-colors cursor-pointer" href="#addons">Complementos</a>
+                <a class="hover:text-primary transition-colors cursor-pointer" href="#terms">Políticas</a>
+                <a class="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-full hover:scale-105 transition-all shadow-md text-xs font-bold tracking-wider" href="#reserve">Reservar</a>
+            </div>
+
+            <button class="md:hidden text-primary focus:outline-none" id="mobile-menu-btn" aria-label="Abrir Menú">
+                <span class="material-symbols-outlined text-2xl">menu</span>
+            </button>
+        </nav>
+        
+        <!-- Mobile Dropdown Menu -->
+        <div class="hidden md:hidden mt-2 mx-auto max-w-7xl bg-warm-cream/95 backdrop-blur-lg border border-outline-variant/30 rounded-2xl p-4 shadow-lg space-y-3" id="mobile-menu">
+            <a class="block py-2 px-4 text-charcoal-brown/80 hover:text-primary font-semibold text-xs uppercase tracking-wider" href="#experiences">Experiencias</a>
+            <a class="block py-2 px-4 text-charcoal-brown/80 hover:text-primary font-semibold text-xs uppercase tracking-wider" href="#addons">Complementos</a>
+            <a class="block py-2 px-4 text-charcoal-brown/80 hover:text-primary font-semibold text-xs uppercase tracking-wider" href="#terms">Políticas</a>
+            <a class="block py-3 text-center bg-primary text-white rounded-xl font-semibold text-xs uppercase tracking-wider" href="#reserve">Reservar Ahora</a>
+        </div>
+    </header>
+
+    <main class="relative z-10 pt-32">
+        <!-- Hero Section -->
+        <section class="min-h-[80vh] flex flex-col lg:flex-row items-center max-w-7xl mx-auto px-4 md:px-8 lg:px-16 py-12 gap-12 lg:gap-16">
+            <div class="flex-1 space-y-8 text-left">
+                <div class="space-y-4">
+                    <span class="text-primary font-bold text-xs uppercase tracking-[0.3em] inline-block bg-primary/10 px-3 py-1 rounded-full">Exclusividad &amp; Detalles Únicos</span>
+                    <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl text-charcoal-brown leading-[1.15]">
+                        Creamos el escenario,<br/><span class="italic text-primary">tú creas el recuerdo.</span>
+                    </h1>
+                </div>
+                <p class="text-base md:text-lg text-charcoal-brown/70 max-w-xl leading-relaxed">
+                    Experiencias de picnic de lujo en Paraíso y Comalcalco. Nos encargamos de toda la decoración, montaje y confort para que tú solo disfrutes de momentos memorables.
+                </p>
+                <div class="pt-4 flex flex-col sm:flex-row gap-4">
+                    <a class="inline-block bg-primary hover:bg-primary/95 text-white font-bold text-xs uppercase tracking-widest px-8 py-4.5 rounded-xl text-center hover:scale-[1.03] transition-transform shadow-lg" href="#reserve">
+                        RESERVAR MI FECHA
+                    </a>
+                    <a class="inline-block border border-secondary text-secondary font-bold text-xs uppercase tracking-widest px-8 py-4.5 rounded-xl text-center hover:bg-secondary hover:text-white transition-all" href="#experiences">
+                        VER CATÁLOGO
+                    </a>
+                </div>
+                <p class="text-xs italic text-charcoal-brown/50 flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-sm text-secondary">verified_user</span> Tu momento brillante comienza con un clic.
+                </p>
+            </div>
+            
+            <div class="flex-1 w-full h-[380px] md:h-[500px] relative">
+                <!-- Stacked visual cards showing luxury picnicking -->
+                <div class="w-full h-full rounded-2xl overflow-hidden shadow-2xl relative z-10 border border-secondary/15">
+                    <img alt="Luxury Picnic Setup" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAE0tvpSDtFxeIfvt9vgg4EtIU22yfcoxcjSr_m3rOZ6Ts43UdDrQAFl_WE8EfvS41JxmAqi4R8S_Wt4yZ3Mt9hNRZzwqKadbETCZu1pmZKIbzQOoWwbfu1-q3J05TQmqIArmA2alu9Wt8WYXrLL62bRbOx0_RqU_J0n5GwrtMHkryXeZ2ZpOknO85zwwR67mYNSmLlrqdWFx1swdDaE6jrfok3B9sT6LQahgmy_id1hj_QZbfmOtEu1JnrNgUrCWIaz6kcoXYNVRM"/>
+                </div>
+                <!-- Glass overlay decoration -->
+                <div class="absolute -bottom-6 -left-6 glass-card p-6 rounded-2xl shadow-glass border border-secondary/10 hidden md:block max-w-xs z-20">
+                    <p class="font-serif text-sm text-primary italic">"El detalle es el alma de lo inolvidable."</p>
+                    <p class="text-[10px] text-charcoal-brown/60 uppercase tracking-widest mt-1.5">Brillante Momento</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works (Como Funciona) -->
+        <section class="bg-surface-dim/40 py-20 relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 text-center">
+                <h2 class="font-serif text-3xl md:text-4xl text-charcoal-brown mb-3">La Ruta hacia un Recuerdo Perfecto</h2>
+                <p class="text-charcoal-brown/60 text-sm md:text-base max-w-xl mx-auto mb-16">Sin complicaciones, sin estrés. Nosotros nos encargamos de todo.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="glass-card p-8 rounded-2xl hover-glow flex flex-col items-center">
+                        <div class="w-12 h-12 bg-primary/10 text-primary rounded-full flex items-center justify-center text-xl font-bold mb-6">1</div>
+                        <h3 class="font-serif text-xl font-semibold mb-3">Elige tu Paquete</h3>
+                        <p class="text-charcoal-brown/70 text-sm leading-relaxed">Revisa nuestros montajes cuidadosamente diseñados y selecciona el que coincida con tu sueño.</p>
+                    </div>
+                    <div class="glass-card p-8 rounded-2xl hover-glow flex flex-col items-center">
+                        <div class="w-12 h-12 bg-secondary/10 text-secondary rounded-full flex items-center justify-center text-xl font-bold mb-6">2</div>
+                        <h3 class="font-serif text-xl font-semibold mb-3">Aparta tu Fecha</h3>
+                        <p class="text-charcoal-brown/70 text-sm leading-relaxed">Reserva con un 50% de anticipo. El saldo restante se liquida cómodamente el día del montaje.</p>
+                    </div>
+                    <div class="glass-card p-8 rounded-2xl hover-glow flex flex-col items-center">
+                        <div class="w-12 h-12 bg-primary/10 text-primary rounded-full flex items-center justify-center text-xl font-bold mb-6">3</div>
+                        <h3 class="font-serif text-xl font-semibold mb-3">Disfruta el Instante</h3>
+                        <p class="text-charcoal-brown/70 text-sm leading-relaxed">Llegamos a locación, instalamos hasta el último cojín, y dejamos todo listo para tu llegada.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experiences Grid Section -->
+        <section class="py-24" id="experiences">
+            <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-16">
+                <div class="text-center mb-16">
+                    <span class="text-primary font-bold text-xs uppercase tracking-[0.25em] bg-primary/10 px-3 py-1 rounded-full">Nuestra Colección</span>
+                    <h2 class="font-serif text-4xl text-charcoal-brown mt-4">Nuestros Paquetes de Picnic</h2>
+                    <p class="text-charcoal-brown/60 mt-3 max-w-xl mx-auto">Selecciona tu montaje preferido para comenzar tu cotización personalizada.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Package 1: Suspiro de Amor -->
+                    <div class="glass-card rounded-2xl overflow-hidden hover-glow flex flex-col">
+                        <div class="h-52 overflow-hidden relative">
+                            <img alt="Suspiro de Amor" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRYTHYSy0rNX-5mgMs_y0ycdwC_WA09wc5XU7Et6qKtJp7VlAZlqsFXpbmc6GmI6uKI9KdYmqCE1L_37vUgBwOO063dVinSZtcQQ5OP-VvqsrTXxKUZxh9mt5rHvTokG2v-dFK5QQNMzBfo9kv1M_oC9bfap8NSMC1cHvcHH4mejYgG6TGnwVpGQ9lBAUdaTVg6sCrSO3x0KQNxy1UBjO0-Mz1Jujac-ABOPjxjOXGgDz732Wwr_iGjQXw6VMqEs2DGQJuEEPipnA"/>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-charcoal-brown text-xl font-bold">Suspiro de Amor</h3>
+                                <span class="font-serif font-bold text-primary text-lg">$800 MXN</span>
+                            </div>
+                            <p class="text-[10px] font-bold text-secondary uppercase tracking-widest mb-3">Picnic Clásico | 2 Personas</p>
+                            <p class="text-sm text-charcoal-brown/70 flex-grow italic mb-4">
+                                Un rincón íntimo y acogedor con mesa de madera, decoración textil suave y snacks selectos para saborear sin prisas.
+                            </p>
+                            <div class="border-t border-primary/10 pt-4 text-xs text-charcoal-brown/70 space-y-1">
+                                <p><strong>Incluye:</strong> Montaje completo, cristalería, bocina Bluetooth y snacks.</p>
+                            </div>
+                            <a class="mt-6 text-center py-3 bg-primary hover:bg-primary/95 text-white font-bold text-xs uppercase tracking-widest rounded-xl transition-all shadow-md" href="#reserve" onclick="selectPackage('Suspiro de Amor')">COTIZAR AHORA</a>
+                        </div>
+                    </div>
+
+                    <!-- Package 2: Picnic Cabaña -->
+                    <div class="glass-card rounded-2xl overflow-hidden hover-glow flex flex-col">
+                        <div class="h-52 overflow-hidden relative">
+                            <img alt="Picnic Cabaña" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGTlALK2elPTsC6MMcMoYvARJK04lwprEUtWp3NnSTP5T0WmKlMOwbeeGYLqluPz0DIaJ-jDUdoHvT2JpbVaIzDlWcxGbH5C2_wZzoXC-Jg8qzUwyN65EIZuU98XfF-0icUn3T31tQpCmoJ2h9Sg2ubEvqCBEvED1R4_k4wasE-KXU3ChSukl8J1RyLXJOzCiZWZAf-4kRRXCW47yTIhGD3qvyho15km8OLHMjeNZ43OvMqQqyEhLGAdft6kDMNV8uQHQ0R3VmWaE"/>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-charcoal-brown text-xl font-bold">Picnic Cabaña</h3>
+                                <span class="font-serif font-bold text-primary text-lg">$900 MXN</span>
+                            </div>
+                            <p class="text-[10px] font-bold text-secondary uppercase tracking-widest mb-3">Teepee Clásico | 2 Personas</p>
+                            <p class="text-sm text-charcoal-brown/70 flex-grow italic mb-4">
+                                Cabaña de tela estilo teepee rodeada de luces decorativas, cojines acolchonados y una atmósfera súper cálida.
+                            </p>
+                            <div class="border-t border-primary/10 pt-4 text-xs text-charcoal-brown/70 space-y-1">
+                                <p><strong>Incluye:</strong> Teepee, mesa baja, vajilla, cojines, letrero luminoso y bocina BT.</p>
+                            </div>
+                            <a class="mt-6 text-center py-3 bg-primary hover:bg-primary/95 text-white font-bold text-xs uppercase tracking-widest rounded-xl transition-all shadow-md" href="#reserve" onclick="selectPackage('Picnic Cabaña')">COTIZAR AHORA</a>
+                        </div>
+                    </div>
+
+                    <!-- Package 3: Picnic Clásico Love -->
+                    <div class="glass-card rounded-2xl overflow-hidden hover-glow flex flex-col">
+                        <div class="h-52 overflow-hidden relative">
+                            <img alt="Picnic Clásico Love" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXu4qM6EJPZtmFRSGJoY4VQOrsyXg0Z0lE-amxbYJmHZRbfZEw9qb7Hwu1fnUULgXn8cf2hD_DnA0hM42iHYCqV78gIMeWLIFEppVBTovWdf2DpDki4A8wIL7-8GcO2Is_0WL7XvkaIBNgWea3cThhGU_y5l2gtEl1HIL8wTRSXqWX_t5zIx2Yi-v1yFxiWwQqWnuTSt_STT3Q-LsBcUlGlPoifu8zxibsNg4tqZP29xaa3PYsuvUTar3C4QxtdXT_a5xAPSWehKWYE"/>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-charcoal-brown text-xl font-bold">Clásico Love</h3>
+                                <span class="font-serif font-bold text-primary text-lg">$1,000 MXN</span>
+                            </div>
+                            <p class="text-[10px] font-bold text-secondary uppercase tracking-widest mb-3">Romance con Fotos | 2 Personas</p>
+                            <p class="text-sm text-charcoal-brown/70 flex-grow italic mb-4">
+                                Postes decorativos con luces y 24 fotografías colgando estilo Polaroid para revivir su historia de amor.
+                            </p>
+                            <div class="border-t border-primary/10 pt-4 text-xs text-charcoal-brown/70 space-y-1">
+                                <p><strong>Incluye:</strong> Estructura con luces, 24 fotos Polaroid impresas, letrero LOVE, vajilla y cubeta.</p>
+                            </div>
+                            <a class="mt-6 text-center py-3 bg-primary hover:bg-primary/95 text-white font-bold text-xs uppercase tracking-widest rounded-xl transition-all shadow-md" href="#reserve" onclick="selectPackage('Picnic Clásico Love')">COTIZAR AHORA</a>
+                        </div>
+                    </div>
+
+                    <!-- Package 4: Picnic Romántico -->
+                    <div class="glass-card rounded-2xl overflow-hidden hover-glow flex flex-col">
+                        <div class="h-52 overflow-hidden relative">
+                            <img alt="Picnic Romántico" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCI9rkw8pBYKT5MWGkYmJqNcQjj_e_z6fcXMsWCAbJSwOZ6SxUmh2K7IrJi-DBLCXgCS4ccuYx6D8LcPrnEwrXFjzqb1vmq9USZRT2vMV1wHmDXUPns6Vi6jokQH9Et5xl3uxK00eHAKvPm1dgWLIvuYlG2ZwQGPTDxetSUKtiHL_7Caar2ZHaVbbvHZ05Xd0rZQObcl7PmI3yAwcrHUeLOr_dT3E19iRakiWTDXwYPfcWelxzpdmtZk8aV6AnHa3vq4pOm6edIshQ"/>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-charcoal-brown text-xl font-bold">Picnic Romántico</h3>
+                                <span class="font-serif font-bold text-primary text-lg">$1,250 MXN</span>
+                            </div>
+                            <p class="text-[10px] font-bold text-secondary uppercase tracking-widest mb-3">Teepee Romance | 2 Personas</p>
+                            <p class="text-sm text-charcoal-brown/70 flex-grow italic mb-4">
+                                Teepee Premium con alfombra especial, letrero luminoso LOVE, velas ambientales y 12 fotos Polaroid.
+                            </p>
+                            <div class="border-t border-primary/10 pt-4 text-xs text-charcoal-brown/70 space-y-1">
+                                <p><strong>Incluye:</strong> Teepee con alfombra, luces, 12 fotos colgadas, letrero LOVE y cubeta para vino.</p>
+                            </div>
+                            <a class="mt-6 text-center py-3 bg-primary hover:bg-primary/95 text-white font-bold text-xs uppercase tracking-widest rounded-xl transition-all shadow-md" href="#reserve" onclick="selectPackage('Picnic Romántico')">COTIZAR AHORA</a>
+                        </div>
+                    </div>
+
+                    <!-- Package 5: Noche Encantada -->
+                    <div class="glass-card rounded-2xl overflow-hidden hover-glow flex flex-col relative border-2 border-secondary/30">
+                        <div class="absolute top-4 right-4 bg-secondary text-charcoal-brown text-[9px] font-extrabold uppercase px-3 py-1.5 rounded-full tracking-wider z-10 shadow-md">
+                            Best Seller 🔥
+                        </div>
+                        <div class="h-52 overflow-hidden relative">
+                            <img alt="Noche Encantada / Picnic Cinema" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKe1wI12OSBPSeClfK4OyWpL7aaNpx47iAR3qZ9meiNxu6u-JgYyFqtSLzmwj4KQIENHJVb8ItBw9-FoTR0UxQQuE0y-ToWNkD5a8jo_miMFidwsMojktkwETFpA58MoJKPxc8fvJWbItHBPTtDXFkfwZ6cH_bW2mKL1UvbWaxF5fIZD977ZkpnSgtdT7u5YlOep4EzvwyVBgAyPAdQTCsuwKlT88eLw52Ml67ZyowyqRLRf6vYuwEi6sCOLvLojCqqaeua0IanPU"/>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-charcoal-brown text-xl font-bold">Noche Encantada</h3>
+                                <span class="font-serif font-bold text-primary text-lg">$1,500 MXN</span>
+                            </div>
+                            <p class="text-[10px] font-bold text-primary uppercase tracking-widest mb-3">Picnic Cinema | Cita Nocturna</p>
+                            <p class="text-sm text-charcoal-brown/70 flex-grow italic mb-4">
+                                Todo el encanto del picnic junto con proyector y pantalla HD para tu película favorita bajo las estrellas.
+                            </p>
+                            <div class="border-t border-primary/10 pt-4 text-xs text-charcoal-brown/70 space-y-1">
+                                <p><strong>Incluye:</strong> Proyector y pantalla, teepee decorativo y ambientación premium. *(No incluye laptop).</p>
+                            </div>
+                            <a class="mt-6 text-center py-3 bg-secondary hover:bg-secondary/90 text-charcoal-brown font-extrabold text-xs uppercase tracking-widest rounded-xl transition-all shadow-md" href="#reserve" onclick="selectPackage('Noche Encantada')">COTIZAR CINEMA</a>
+                        </div>
+                    </div>
+
+                    <!-- Package 6: Picnic Premium -->
+                    <div class="glass-card rounded-2xl overflow-hidden hover-glow flex flex-col">
+                        <div class="h-52 overflow-hidden relative">
+                            <img alt="Picnic Premium" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjvZhwXbPBqS7yU1XZCF_BOiuJsNyo-wp5XL5gzvlvI_cF8zwNTLh9m8tWDZjalw6vRakssnT8wpAux6PfNp7l-E09mqlYuIGV3MzIh6Jwu9MF4PKXisJW4dMGjkOzN684b_gFy3lTFxqR5DVUgfWxTvbAd8iqPkaT0riO27ln5ub06b1n_viyjceU0gWe7-3VVURs0vi9NpkgmDln4xtQZ1_nL5RtaSf3TDfoCRYlUH8klV7RJHuPco4ZoMaIb3LEvEW_IlZf8n4"/>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-charcoal-brown text-xl font-bold">Picnic Premium</h3>
+                                <span class="font-serif font-bold text-primary text-lg">$1,700 MXN</span>
+                            </div>
+                            <p class="text-[10px] font-bold text-secondary uppercase tracking-widest mb-3">Cinema Completo VIP | Propuestas</p>
+                            <p class="text-sm text-charcoal-brown/70 flex-grow italic mb-4">
+                                Ambientación ultra exclusiva con teepee, proyector de cine, pétalos de rosa artificiales, globos de helio y vino.
+                            </p>
+                            <div class="border-t border-primary/10 pt-4 text-xs text-charcoal-brown/70 space-y-1">
+                                <p><strong>Incluye:</strong> Proyector, globos helio, pétalos, 12 fotos, vajilla VIP y cubeta de vino.</p>
+                            </div>
+                            <a class="mt-6 text-center py-3 bg-primary hover:bg-primary/95 text-white font-bold text-xs uppercase tracking-widest rounded-xl transition-all shadow-md" href="#reserve" onclick="selectPackage('Picnic Premium')">COTIZAR PREMIUM</a>
+                        </div>
+                    </div>
+
+                    <!-- Package 7: Brunch & Glow -->
+                    <div class="glass-card rounded-2xl overflow-hidden hover-glow flex flex-col">
+                        <div class="h-52 overflow-hidden relative">
+                            <img alt="Brunch &amp; Glow / Picnic Fiesta" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjoXg0lLE2jhfMEjAOK5VaQNWMMUXh27KrMk2yRNJ5nrofft3_zh-XxW9ez0LcYgWkbfthdeN3qM777znM2jp0wSvV7pKz7XgAOuH0Lm8pDoLBGoBIpej6jVu9dMijlKkIaKvFLt7vDK_7HYiwsC1A_piusnhWh95OsUx-Qtl7UNcCviCle7-8k120_oGHa1qQ2o_5F_U16LmEBLDXiEcYgzKpnXv8D452dYPazENoUE0E1rBiaQv34HcByJ7DcD0QkPEqy8Qd1nk"/>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-charcoal-brown text-xl font-bold">Brunch &amp; Glow</h3>
+                                <span class="font-serif font-bold text-primary text-lg">$2,399 MXN</span>
+                            </div>
+                            <p class="text-[10px] font-bold text-secondary uppercase tracking-widest mb-3">Grupal / Amigas | Hasta 10 Personas</p>
+                            <p class="text-sm text-charcoal-brown/70 flex-grow italic mb-4">
+                                Montaje extendido ideal para cumpleaños, despedidas o reuniones. Incluye estación de fotos súper instagrameable.
+                            </p>
+                            <div class="border-t border-primary/10 pt-4 text-xs text-charcoal-brown/70 space-y-1">
+                                <p><strong>Incluye:</strong> Estación para fotos, mobiliario para 10 personas, mantelería y vajilla desechable de lujo.</p>
+                            </div>
+                            <a class="mt-6 text-center py-3 bg-primary hover:bg-primary/95 text-white font-bold text-xs uppercase tracking-widest rounded-xl transition-all shadow-md" href="#reserve" onclick="selectPackage('Brunch & Glow')">COTIZAR FIESTA</a>
+                        </div>
+                    </div>
+
+                    <!-- Package 8: Picnic Fiesta Niños -->
+                    <div class="glass-card rounded-2xl overflow-hidden hover-glow flex flex-col">
+                        <div class="h-52 overflow-hidden relative">
+                            <img alt="Picnic Fiesta Niños" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZh96PHyv-YGr6CVwkywNmhwuDt7cRvztwqLYJp9PrWkVk3rOn8ZaO7c_Os1-Wn0fhb83-rt5GlJV2HwIzPLK3vqwROQPDF_Rn-mBlwEI31f3tsajKrBw-lQg-V8AnIShDEPIo5uLUMkjMDNht2fAFSPOLN-y0t4rHP9o5tSladITMJDFxVva65_FadpZQGhTx4QinBhW874ik2OHdwEV-NiW4aO-quXqq8Zqou8Qt4JSslOBMbifr6oRFISuL2nPKMqTAz4s6F6M"/>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-charcoal-brown text-xl font-bold">Fiesta Niños</h3>
+                                <span class="font-serif font-bold text-primary text-lg">$2,499 MXN</span>
+                            </div>
+                            <p class="text-[10px] font-bold text-secondary uppercase tracking-widest mb-3">Infantil Temático | Hasta 10 Niños</p>
+                            <p class="text-sm text-charcoal-brown/70 flex-grow italic mb-4">
+                                Diversión y fantasía con platos/vasos temáticos, teepee decorativo y mobiliario adaptado para pequeños aventureros.
+                            </p>
+                            <div class="border-t border-primary/10 pt-4 text-xs text-charcoal-brown/70 space-y-1">
+                                <p><strong>Incluye:</strong> Teepee infantil, mesa baja, cojines temáticos, luces y platos/vasos desechables.</p>
+                            </div>
+                            <a class="mt-6 text-center py-3 bg-primary hover:bg-primary/95 text-white font-bold text-xs uppercase tracking-widest rounded-xl transition-all shadow-md" href="#reserve" onclick="selectPackage('Picnic Fiesta Niños')">COTIZAR INFANTIL</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Complementos Section (Add-ons) -->
+        <section class="bg-charcoal-brown text-warm-cream py-24 relative overflow-hidden" id="addons">
+            <!-- Secondary ambient light inside dark section -->
+            <div class="absolute top-[20%] right-[-10%] w-80 h-80 bg-secondary/10 rounded-full filter blur-[100px] pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-16">
+                <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16">
+                    <div class="max-w-2xl">
+                        <span class="text-secondary font-bold text-xs uppercase tracking-[0.3em] inline-block bg-secondary/10 px-3 py-1 rounded-full mb-3">Detalles Adicionales</span>
+                        <h2 class="font-serif text-4xl md:text-5xl text-warm-cream">Personaliza Tu Experiencia</h2>
+                    </div>
+                    <p class="text-warm-cream/60 max-w-sm leading-relaxed text-sm md:text-base">
+                        Agrega estos detalles especiales para hacer tu evento aún más completo.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="p-6 rounded-2xl border border-secondary/15 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-colors flex flex-col justify-between">
+                        <div>
+                            <span class="material-symbols-outlined text-secondary text-4xl mb-4">photo_library</span>
+                            <h4 class="font-serif text-lg font-bold">12 Fotos Polaroid</h4>
+                            <p class="text-xs text-warm-cream/65 mt-2 leading-relaxed">Impresas y colgadas con pequeñas frases especiales.</p>
+                        </div>
+                        <p class="text-secondary text-lg font-bold mt-4">$50 MXN</p>
+                    </div>
+                    <div class="p-6 rounded-2xl border border-secondary/15 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-colors flex flex-col justify-between">
+                        <div>
+                            <span class="material-symbols-outlined text-secondary text-4xl mb-4">wine_bar</span>
+                            <h4 class="font-serif text-lg font-bold">Vino Personalizado</h4>
+                            <p class="text-xs text-warm-cream/65 mt-2 leading-relaxed">Botella de vino selecto con etiqueta diseñada exclusivamente.</p>
+                        </div>
+                        <p class="text-secondary text-lg font-bold mt-4">$250 MXN</p>
+                    </div>
+                    <div class="p-6 rounded-2xl border border-secondary/15 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-colors flex flex-col justify-between">
+                        <div>
+                            <span class="material-symbols-outlined text-secondary text-4xl mb-4">restaurant</span>
+                            <h4 class="font-serif text-lg font-bold">Tabla de Quesos</h4>
+                            <p class="text-xs text-warm-cream/65 mt-2 leading-relaxed">Tabla con quesos maduros, embutidos premium y frutas.</p>
+                        </div>
+                        <p class="text-secondary text-lg font-bold mt-4">$650 MXN</p>
+                    </div>
+                    <div class="p-6 rounded-2xl border border-secondary/15 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-colors flex flex-col justify-between">
+                        <div>
+                            <span class="material-symbols-outlined text-secondary text-4xl mb-4">celebration</span>
+                            <h4 class="font-serif text-lg font-bold">Globos con Helio</h4>
+                            <p class="text-xs text-warm-cream/65 mt-2 leading-relaxed">Globos metálicos inflados: Números o hermosos Corazones.</p>
+                        </div>
+                        <p class="text-secondary text-sm font-semibold mt-4">N: $180 c/u | C: $65 c/u</p>
+                    </div>
+                </div>
+
+                <div class="mt-12 text-center text-xs text-warm-cream/60 border-t border-secondary/10 pt-8">
+                    💡 <strong>¿Deseas algo más?</strong> Cotizamos arreglos florales, bouquet de globos gigantes o mesas de dulces bajo pedido.
+                </div>
+            </div>
+        </section>
+
+        <!-- Terms & Conditions -->
+        <section class="py-20" id="terms">
+            <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-16">
+                <div class="text-center mb-16">
+                    <h2 class="font-serif text-3xl md:text-4xl text-charcoal-brown">Políticas de Reservación</h2>
+                    <p class="text-charcoal-brown/65 mt-2">Detalles esenciales para garantizar el orden y calidad de tu evento.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="p-6 rounded-2xl bg-white shadow-glass border border-primary/5 hover:shadow-glass-hover transition-all duration-300">
+                        <div class="w-10 h-10 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-4">
+                            <span class="material-symbols-outlined text-lg">payments</span>
+                        </div>
+                        <h4 class="font-bold text-charcoal-brown mb-2">Apartado del 50%</h4>
+                        <p class="text-xs text-charcoal-brown/70 leading-relaxed">Para apartar y congelar tu fecha requerimos el 50% de anticipo. El saldo se liquida el día del montaje.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-white shadow-glass border border-primary/5 hover:shadow-glass-hover transition-all duration-300">
+                        <div class="w-10 h-10 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-4">
+                            <span class="material-symbols-outlined text-lg">event_busy</span>
+                        </div>
+                        <h4 class="font-bold text-charcoal-brown mb-2">Cancelaciones</h4>
+                        <p class="text-xs text-charcoal-brown/70 leading-relaxed">No se efectúan reembolsos del anticipo. Se permite cambio de fecha notificando mínimo 3 días hábiles antes.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-white shadow-glass border border-primary/5 hover:shadow-glass-hover transition-all duration-300">
+                        <div class="w-10 h-10 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-4">
+                            <span class="material-symbols-outlined text-lg">history</span>
+                        </div>
+                        <h4 class="font-bold text-charcoal-brown mb-2">Montaje</h4>
+                        <p class="text-xs text-charcoal-brown/70 leading-relaxed">Llegamos a la locación elegida con 45 minutos de anticipación. Retiramos todo al día siguiente del evento.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-white shadow-glass border border-primary/5 hover:shadow-glass-hover transition-all duration-300">
+                        <div class="w-10 h-10 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-4">
+                            <span class="material-symbols-outlined text-lg">shield</span>
+                        </div>
+                        <h4 class="font-bold text-charcoal-brown mb-2">Responsabilidad</h4>
+                        <p class="text-xs text-charcoal-brown/70 leading-relaxed">El mobiliario es rentado y propiedad de Brillante Momento; daños severos o pérdidas conllevan cobros por reposición.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="bg-surface-dim/30 py-24">
+            <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-16">
+                <h2 class="font-serif text-3xl text-center mb-16 italic">Experiencias Inolvidables</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="p-8 rounded-2xl bg-white border border-primary/5 shadow-glass relative flex flex-col justify-between">
+                        <div>
+                            <div class="flex text-secondary mb-4">
+                                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                            </div>
+                            <p class="text-sm text-charcoal-brown/80 italic leading-relaxed">
+                                "Súper recomendado. Le organicé un picnic cabaña sorpresa a mi novia por nuestro aniversario en Paraíso. Quedó encantada con las luces y la decoración."
+                            </p>
+                        </div>
+                        <cite class="text-xs font-bold text-primary not-italic mt-6 block">— Carlos V., Paraíso</cite>
+                    </div>
+                    <div class="p-8 rounded-2xl bg-white border border-primary/5 shadow-glass relative flex flex-col justify-between">
+                        <div>
+                            <div class="flex text-secondary mb-4">
+                                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                            </div>
+                            <p class="text-sm text-charcoal-brown/80 italic leading-relaxed">
+                                "El paquete Noche Encantada es sensacional. Proyectamos nuestra película favorita en el jardín con una ambientación súper bonita. Gran servicio y puntualidad."
+                            </p>
+                        </div>
+                        <cite class="text-xs font-bold text-primary not-italic mt-6 block">— Sofía M., Comalcalco</cite>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Booking Form / Cotizador interactivo -->
+        <section class="py-24 relative overflow-hidden" id="reserve">
+            <div class="max-w-3xl mx-auto px-4 relative z-10">
+                <div class="glass-card p-8 md:p-12 rounded-3xl shadow-2xl">
+                    <div class="text-center mb-8">
+                        <h2 class="font-serif text-3xl md:text-4xl text-charcoal-brown mb-2">Comienza Tu Reserva</h2>
+                        <p class="text-sm text-charcoal-brown/65">Completa el formulario; enviaremos los detalles y tu cotización lista a tu WhatsApp.</p>
+                    </div>
+                    
+                    <form class="space-y-6" id="booking-form">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="font-semibold text-xs text-charcoal-brown/95 uppercase tracking-wider">Nombre Completo</label>
+                                <input required class="w-full bg-white/70 border border-primary/10 rounded-xl p-3 focus:ring-2 focus:ring-primary focus:border-transparent text-sm" placeholder="Ej. Ana Gómez" type="text" id="form-name"/>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="font-semibold text-xs text-charcoal-brown/95 uppercase tracking-wider">WhatsApp</label>
+                                <input required class="w-full bg-white/70 border border-primary/10 rounded-xl p-3 focus:ring-2 focus:ring-primary focus:border-transparent text-sm" placeholder="Ej. 9331234567" type="tel" id="form-phone"/>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="font-semibold text-xs text-charcoal-brown/95 uppercase tracking-wider">Fecha del Evento</label>
+                                <input required class="w-full bg-white/70 border border-primary/10 rounded-xl p-3 focus:ring-2 focus:ring-primary focus:border-transparent text-sm" type="date" id="form-date"/>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="font-semibold text-xs text-charcoal-brown/95 uppercase tracking-wider">Paquete de Picnic</label>
+                                <select class="w-full bg-white/70 border border-primary/10 rounded-xl p-3 focus:ring-2 focus:ring-primary focus:border-transparent text-sm" id="form-package">
+                                    <option value="Suspiro de Amor">Suspiro de Amor ($800)</option>
+                                    <option value="Picnic Cabaña">Picnic Cabaña ($900)</option>
+                                    <option value="Picnic Clásico Love">Picnic Clásico Love ($1,000)</option>
+                                    <option value="Picnic Romántico">Picnic Romántico ($1,250)</option>
+                                    <option value="Noche Encantada">Noche Encantada / Cinema ($1,500)</option>
+                                    <option value="Picnic Premium">Picnic Premium Cinema ($1,700)</option>
+                                    <option value="Brunch & Glow">Brunch & Glow ($2,399)</option>
+                                    <option value="Picnic Fiesta Niños">Picnic Fiesta Niños ($2,499)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Interactivo: Cotizador display -->
+                        <div class="p-4 rounded-xl bg-primary/5 border border-primary/10 space-y-2 hidden" id="pricing-summary">
+                            <div class="flex justify-between items-center">
+                                <span class="font-bold text-xs uppercase text-primary tracking-wide" id="summary-title">Paquete</span>
+                                <span class="font-serif font-bold text-charcoal-brown text-base" id="summary-price">$0 MXN</span>
+                            </div>
+                            <p class="text-xs text-charcoal-brown/70 italic" id="summary-desc"></p>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="font-semibold text-xs text-charcoal-brown/95 uppercase tracking-wider">Correo Electrónico (Cumpleaños / Regalos)</label>
+                            <input class="w-full bg-white/70 border border-primary/10 rounded-xl p-3 focus:ring-2 focus:ring-primary focus:border-transparent text-sm" placeholder="correo@ejemplo.com" type="email" id="form-email"/>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="font-semibold text-xs text-charcoal-brown/95 uppercase tracking-wider">Mensaje o Detalles Extra</label>
+                            <textarea class="w-full bg-white/70 border border-primary/10 rounded-xl p-3 focus:ring-2 focus:ring-primary focus:border-transparent text-sm" placeholder="Menciona complementos (Fotos, vino, etc.) o lugar estimado para el montaje..." rows="3" id="form-message"></textarea>
+                        </div>
+                        
+                        <button class="w-full bg-primary hover:bg-primary/95 text-white py-4 rounded-xl font-serif text-base font-bold flex items-center justify-center gap-3 transition-opacity shadow-lg" type="submit">
+                            <span class="material-symbols-outlined text-lg">chat_bubble</span>
+                            Enviar Solicitud a WhatsApp
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-charcoal-brown text-warm-cream pt-16 pb-8 px-4 md:px-8 lg:px-16 border-t border-secondary/10">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 border-b border-white/5 pb-8">
+            <div class="font-serif italic text-2xl font-bold text-primary">Brillante Momento</div>
+            <div class="flex gap-8 text-[11px] uppercase tracking-wider text-warm-cream/70 font-semibold">
+                <a class="hover:text-secondary transition-colors" href="https://www.instagram.com/Brillante.momento" target="_blank">Instagram</a>
+                <a class="hover:text-secondary transition-colors" href="#terms">Políticas</a>
+                <a class="hover:text-secondary transition-colors" href="#reserve">Contacto</a>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto pt-8 flex flex-col md:flex-row justify-between text-center md:text-left text-warm-cream/50 text-[10px] gap-4 tracking-wider uppercase">
+            <p>© 2026 Brillante Momento. Todos los derechos reservados. Paraíso &amp; Comalcalco.</p>
+            <p class="italic">Todo el mobiliario es de uso exclusivo de Brillante Momento.</p>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp -->
+    <a class="fixed bottom-6 right-6 z-[100] w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl wa-btn hover:scale-110 transition-transform" href="https://wa.me/529331469857" target="_blank" id="floating-whatsapp" aria-label="Contacto Directo WhatsApp">
+        <svg class="w-7 h-7 fill-current" viewbox="0 0 24 24">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793 0-.853.448-1.271.607-1.445.16-.175.348-.218.463-.218.116 0 .232.001.332.005.109.004.258-.041.405.314.159.386.543 1.327.59 1.427.047.1.079.218.012.352-.067.133-.1.218-.199.333-.1.116-.209.258-.299.345-.101.096-.206.201-.089.402.116.201.517.854 1.107 1.381.759.677 1.397.887 1.597.985.2.099.317.083.434-.051.116-.134.502-.584.637-.784.135-.2.27-.167.455-.099.186.069 1.179.556 1.383.659.205.102.341.152.391.237.05.085.05.491-.094.896z"></path>
+        </svg>
+    </a>
+
+    <script>
+        // Package data dictionary
+        const packageData = {
+            'Suspiro de Amor': { price: '$800 MXN', desc: 'Picnic Clásico de 2 Personas ideal para aniversarios o momentos relajados.' },
+            'Picnic Cabaña': { price: '$900 MXN', desc: 'Montaje de teepee clásico de 2 Personas con ambientación suave.' },
+            'Picnic Clásico Love': { price: '$1,000 MXN', desc: 'Mobiliario especial de 2 Personas con postes de luces y 24 fotos Polaroid colgantes.' },
+            'Picnic Romántico': { price: '$1,250 MXN', desc: 'Teepee de 2 Personas con ambientación romántica premium, letreros y 12 fotos Polaroid.' },
+            'Noche Encantada': { price: '$1,500 MXN', desc: 'Cinema al Aire Libre con proyector HD, pantalla, teepee decorativo y luces.' },
+            'Picnic Premium': { price: '$1,700 MXN', desc: 'Cinema Completo VIP con proyector, globos con helio, pétalos y botella de vino.' },
+            'Brunch & Glow': { price: '$2,399 MXN', desc: 'Montaje extendido para 10 personas con estación de fotos y vajilla desechable de lujo.' },
+            'Picnic Fiesta Niños': { price: '$2,499 MXN', desc: 'Picnic infantil temático para 10 niños con mesa baja, teepee y platos temáticos.' }
+        };
+
+        // Update pricing calculator display dynamically
+        const packageSelect = document.getElementById('form-package');
+        const summaryBox = document.getElementById('pricing-summary');
+        const summaryTitle = document.getElementById('summary-title');
+        const summaryPrice = document.getElementById('summary-price');
+        const summaryDesc = document.getElementById('summary-desc');
+
+        function updateCalculator() {
+            const selected = packageSelect.value;
+            if (packageData[selected]) {
+                summaryTitle.textContent = selected;
+                summaryPrice.textContent = packageData[selected].price;
+                summaryDesc.textContent = packageData[selected].desc;
+                summaryBox.classList.remove('hidden');
+            } else {
+                summaryBox.classList.add('hidden');
+            }
+            updateWhatsAppLink();
+        }
+
+        packageSelect.addEventListener('change', updateCalculator);
+        // Run once on load
+        updateCalculator();
+
+        // Scroll interaction for main header
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('main-nav');
+            if (window.scrollY > 40) {
+                nav.classList.remove('top-12');
+                nav.classList.add('top-0');
+                nav.querySelector('nav').classList.remove('rounded-2xl', 'mx-auto');
+                nav.querySelector('nav').classList.add('rounded-none', 'w-full', 'border-x-0', 'border-t-0');
+            } else {
+                nav.classList.add('top-12');
+                nav.classList.remove('top-0');
+                nav.querySelector('nav').classList.add('rounded-2xl', 'mx-auto');
+                nav.querySelector('nav').classList.remove('rounded-none', 'w-full', 'border-x-0', 'border-t-0');
+            }
+        });
+
+        // Toggle mobile nav dropdown
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchors
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Pre-fill package selection from grid click
+        function selectPackage(packageName) {
+            packageSelect.value = packageName;
+            updateCalculator();
+        }
+
+        // WhatsApp reservation sender
+        const bookingForm = document.getElementById('booking-form');
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('form-name').value;
+            const phone = document.getElementById('form-phone').value;
+            const date = document.getElementById('form-date').value;
+            const packageSelected = packageSelect.value;
+            const email = document.getElementById('form-email').value;
+            const message = document.getElementById('form-message').value;
+
+            let text = `¡Hola! Me gustaría cotizar/reservar una experiencia:\n\n`;
+            text += `*Nombre:* ${name}\n`;
+            text += `*WhatsApp:* ${phone}\n`;
+            text += `*Fecha del evento:* ${date}\n`;
+            text += `*Paquete de interés:* ${packageSelected}\n`;
+            if (email) {
+                text += `*Email:* ${email}\n`;
+            }
+            if (message) {
+                text += `*Detalles/Mensaje:* ${message}\n`;
+            }
+            
+            const encodedText = encodeURIComponent(text);
+            window.open(`https://wa.me/529331469857?text=${encodedText}`, '_blank');
+        });
+
+        // Dynamic helper to update floating button message when form starts to fill
+        function updateWhatsAppLink() {
+            const name = document.getElementById('form-name').value;
+            const date = document.getElementById('form-date').value;
+            const packageSelected = packageSelect.value;
+            
+            let waUrl = 'https://wa.me/529331469857';
+            if (name || date) {
+                let text = `¡Hola! Me gustaría cotizar/reservar una experiencia:\n\n`;
+                if (name) text += `*Nombre:* ${name}\n`;
+                if (date) text += `*Fecha:* ${date}\n`;
+                text += `*Paquete:* ${packageSelected}\n`;
+                waUrl += `?text=${encodeURIComponent(text)}`;
+            }
+            document.getElementById('floating-whatsapp').href = waUrl;
+        }
+
+        document.getElementById('form-name').addEventListener('input', updateWhatsAppLink);
+        document.getElementById('form-date').addEventListener('input', updateWhatsAppLink);
+    </script>
+</body>
+</html>
