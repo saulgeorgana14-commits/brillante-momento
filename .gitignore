@@ -1,3 +1,8 @@
 .DS_Store
 *.tmp
 thumbs.db
+
+# basura de macOS en exFAT y secretos (respaldo del SSD, 15-oct-2026)
+._*
+.env*
+!.env.example
